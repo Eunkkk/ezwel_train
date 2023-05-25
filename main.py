@@ -9,6 +9,10 @@ import time
 import ezwel_bot as eb
 
 print("Process Strat...")
+print("입력된 id: ", sys.argv[1])
+print("입력된 pw: ", "***")
+print("입력된 출발지: ", sys.argv[3])
+print("입력된 목적지: ", sys.argv[4])
 
 # 시작시간 기록
 start_time = time.time()
@@ -16,8 +20,10 @@ start_time = time.time()
 id = sys.argv[1]
 # 입력받은 pw set
 pw = sys.argv[2]
-# 입력받은 요일 set
-# weekDay = sys.argv[3]
+# 입력받은 출발지 set
+dep_city = sys.argv[3]
+# 입력받은 목적지 set
+arr_city = sys.argv[4]
 # 크롤러 가져옴
 BOT = eb.EzwelBot()
 # 로그인 동작
@@ -35,4 +41,4 @@ BOT.switch_tap()
 # 윈도우 리스트 확인
 BOT.print_window()
 # 도시 선택
-BOT.choice_city()
+BOT.choice_city(dep_city, arr_city)

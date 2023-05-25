@@ -72,8 +72,23 @@ class EzwelBot:
         last_tab = self.driver.window_handles[-1]
         self.driver.switch_to.window(last_tab)
 
-    def choice_city(self):
+    # 출발지 목적지 역 선택
+    def choice_city(self, dep_city, arr_city):
+        # 5초 대기
         time.sleep(5)
+        # 역 검색 버튼 클릭
         choice_btn = self.driver.find_element(By.CLASS_NAME, "city-select")
         choice_btn.click()
+        # 출발지 역 선택
+        dep_city_xpath = "//dd/a[text()='"+dep_city+"']"
+        dep_city_btn = self.driver.find_element(By.XPATH, dep_city_xpath)
+        dep_city_btn.click()
+        # 도착지 역 선택
+        arr_city_xpath = "//dd/a[text()='"+arr_city+"']"
+        arr_city_btn = self.driver.find_element(By.XPATH, arr_city_xpath)
+        arr_city_btn.click()
+        # 선택완료 버튼 클릭
+        close_btn = self.driver.find_element(By.CLASS_NAME, "wtbtn-commit")
+        close_btn.click()
+
 
